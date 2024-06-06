@@ -1,8 +1,8 @@
 <script>
 // import searchfilm
 import SearchFilm from './components/SearchFilm.vue';
-// importo appfilm
-import AppFilm from './components/AppFilm.vue';
+
+
 // importo store
 import { store } from './store';
 // importo axios
@@ -11,7 +11,7 @@ import axios from 'axios';
 export default {
   name: "AppBoolflix",
   components: {
-    AppFilm,
+
     SearchFilm,
   },
   data() {
@@ -37,7 +37,7 @@ export default {
           // Controllo se ci sono errori durante chiamata API
           console.error('Errore durante la richiesta API:', error);
         });
-      }
+      };
     }
   },
   created() {
@@ -51,9 +51,9 @@ export default {
 <template>
 
   <div class="container py-5">
-    <h1 class="text-danger">boolflix</h1>
+    <h1 class="text-danger">Boolflix</h1>
     <SearchFilm @search="getFilm" />
-    <AppFilm />
+
   </div>
 
 </template>

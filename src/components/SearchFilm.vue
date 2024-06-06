@@ -17,6 +17,15 @@ export default {
 </script>
 
 <template>
-    <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @input="emitSearch()">
-    <button @click="emitSearch()">Cerca</button>
+    <div class="container">
+        <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText">
+        <button @click="emitSearch">Cerca</button>
+        <!-- ciclo for per ogni film in array results stampo titolo ecc.. -->
+        <div v-for="(film, index) in this.store.results.results" :key="index">
+            <p>Titolo: {{ film.title }}</p>
+            <p>Titolo Originale: {{ film.original_title }}</p>
+            <p>Lingua: {{ film.original_language }}</p>
+            <p>Media Voto: {{ film.vote_average }}</p>
+        </div>
+    </div>
 </template>
