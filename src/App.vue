@@ -26,7 +26,7 @@ export default {
         axios.get(this.store.apiUrl, {
           // Aggiungo parametri di ricerca
           params: {
-            api_key: '415477f3fde7b23ef241d1d552d9ae84',
+            api_key: this.store.apiKey,
             query: searchText,
           }
         }).then((response) => {

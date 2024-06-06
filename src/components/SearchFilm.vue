@@ -18,7 +18,7 @@ export default {
 
 <template>
     <div class="container">
-        <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText">
+        <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch">
         <button @click="emitSearch">Cerca</button>
         <!-- ciclo for per ogni film in array results stampo titolo ecc.. -->
         <div v-for="(film, index) in this.store.results.results" :key="index">
