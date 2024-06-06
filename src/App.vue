@@ -11,7 +11,6 @@ import axios from 'axios';
 export default {
   name: "AppBoolflix",
   components: {
-
     SearchFilm,
   },
   data() {
@@ -53,6 +52,7 @@ export default {
   <div class="container py-5">
     <h1 class="text-danger">Boolflix</h1>
     <SearchFilm @search="getFilm" />
+
 
   </div>
 

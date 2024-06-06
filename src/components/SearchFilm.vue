@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store';
+import flag from './flag.vue';
 export default {
     name: "SearchFilm",
     data() {
@@ -12,6 +13,9 @@ export default {
         emitSearch() {
             this.$emit('search', this.searchText);
         }
+    },
+    components: {
+        flag,
     }
 };
 </script>
@@ -24,7 +28,14 @@ export default {
         <div v-for="(film, index) in this.store.results.results" :key="index">
             <p>Titolo: {{ film.title }}</p>
             <p>Titolo Originale: {{ film.original_title }}</p>
-            <p>Lingua: {{ film.original_language }}</p>
+            <p>Lingua:
+                <span v-if="film.original_language === 'it'">
+                    <flag />
+                </span>
+                <span v-else>
+                    {{ film.original_language }}
+                </span>
+            </p>
             <p>Media Voto: {{ film.vote_average }}</p>
         </div>
     </div>
