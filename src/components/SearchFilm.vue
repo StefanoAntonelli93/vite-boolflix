@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store';
-import flag from './flag.vue';
+
 export default {
     name: "SearchFilm",
     data() {
@@ -14,23 +14,25 @@ export default {
             this.$emit('search', this.searchText);
         }
     },
-    components: {
-        flag,
-    }
 };
 </script>
 
 <template>
     <div class="container">
-        <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch">
+        <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
         <button @click="emitSearch">Cerca</button>
-        <!-- ciclo for per ogni film in array results stampo titolo ecc.. -->
-        <div v-for="(film, index) in this.store.results.results" :key="index">
+        <div v-for="(film, index) in store.results.results" :key="index">
             <p>Titolo: {{ film.title }}</p>
             <p>Titolo Originale: {{ film.original_title }}</p>
             <p>Lingua:
                 <span v-if="film.original_language === 'it'">
-                    <flag />
+                    <img src="/images/flags/italy.png">
+                </span>
+                <span v-else-if="film.original_language === 'en'">
+                    <img src="/images/flags/united-kingdom.png">
+                </span>
+                <span v-else-if="film.original_language === 'us'">
+                    <img src="/images/flags/united-states.png">
                 </span>
                 <span v-else>
                     {{ film.original_language }}
@@ -40,3 +42,11 @@ export default {
         </div>
     </div>
 </template>
+
+
+
+<style scoped>
+img {
+    width: 1rem;
+}
+</style>
