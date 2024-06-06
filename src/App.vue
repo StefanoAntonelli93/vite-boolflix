@@ -1,6 +1,8 @@
 <script>
+// import searchfilm
+import SearchFilm from './components/SearchFilm.vue';
 // importo appfilm
-import AppFilm from './components/AppFilm.vue'
+import AppFilm from './components/AppFilm.vue';
 // importo store
 import { store } from './store';
 // importo axios
@@ -10,6 +12,7 @@ export default {
   name: "AppBoolflix",
   components: {
     AppFilm,
+    SearchFilm,
   },
   data() {
     return {
@@ -17,27 +20,26 @@ export default {
     }
   },
   methods: {
-    // creo funzione per chiamata api
-    getFilm() {
-      axios.get(this.store.apiUrl, {
-        // aggiungo parametri di ricerca
-        params: {
-          api_key: '415477f3fde7b23ef241d1d552d9ae84',
-          query: 'spiderman',
-        }
-      }).then((response) => {
-        console.log(response.data);
-        console.log(this.store.results);
-        // l'array results si popola dei dati api
-        this.store.results = response.data;
-
-      });
-      // controllo se ci sono errori durante chiamata api
-    }, catch(error) {
-      console.error('Errore durante la richiesta API:', error);
+    // Funzione per chiamata API
+    getFilm(searchText = '') {
+      if (searchText) {
+        axios.get(this.store.apiUrl, {
+          // Aggiungo parametri di ricerca
+          params: {
+            api_key: '415477f3fde7b23ef241d1d552d9ae84',
+            query: searchText,
+          }
+        }).then((response) => {
+          console.log(response.data);
+          // L'array results si popola dei dati API
+          this.store.results = response.data;
+        }).catch((error) => {
+          // Controllo se ci sono errori durante chiamata API
+          console.error('Errore durante la richiesta API:', error);
+        });
+      }
     }
   },
-
   created() {
     this.getFilm();
   },
@@ -50,6 +52,7 @@ export default {
 
   <div class="container py-5">
     <h1 class="text-danger">boolflix</h1>
+    <SearchFilm @search="getFilm" />
     <AppFilm />
   </div>
 
