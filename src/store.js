@@ -6,4 +6,5 @@ export const store = reactive({
   // importo qui url per chiamata api
   apiUrl: "https://api.themoviedb.org/3/search/movie",
   apiKey: "415477f3fde7b23ef241d1d552d9ae84",
+  language: "it",
 });

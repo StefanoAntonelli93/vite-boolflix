@@ -39,6 +39,7 @@ export default {
                 </span>
             </p>
             <p>Media Voto: {{ film.vote_average }}</p>
+            <p>Trama: {{ film.overview }}</p>
         </div>
     </div>
 </template>

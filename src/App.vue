@@ -26,6 +26,7 @@ export default {
           // Aggiungo parametri di ricerca
           params: {
             api_key: this.store.apiKey,
+            language: this.store.language,
             query: searchText,
           }
         }).then((response) => {
