@@ -27,8 +27,12 @@ export default {
 
         <!-- FILM -->
         <div v-for="(film, index) in store.film.results" :key="index">
-            <p>Titolo: {{ film.title }}</p>
-            <p>Titolo Originale: {{ film.original_title }}</p>
+            <p v-if="film.title === film.original_title">
+                Titolo: {{ film.title }}</p>
+            <p v-else>
+            <p> Titolo: {{ film.title }}</p>
+            <p> Titolo originale: {{ film.original_title }}</p>
+            </p>
             <p>Lingua:
                 <span v-if="film.original_language === 'it'">
                     <img src="/images/flags/italy.png">
