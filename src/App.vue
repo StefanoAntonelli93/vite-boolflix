@@ -64,7 +64,7 @@ export default {
 
 <template>
   <div class="container py-5">
-    <h1 class="text-danger">Boolflix</h1>
+    <h1 class="text-danger"><a href="/">Boolflix</a></h1>
     <!-- chiamata emit -->
     <SearchFilm @search="getFilm" />
 

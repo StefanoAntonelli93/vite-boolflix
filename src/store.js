@@ -8,6 +8,8 @@ export const store = reactive({
   apiInfo: {
     baseUrl: "https://api.themoviedb.org/3/search/",
     key: "415477f3fde7b23ef241d1d552d9ae84",
+    poster: "https://image.tmdb.org/t/p/",
+    sizePoster: "w342",
     language: "it",
     endpoints: {
       movie: "movie",

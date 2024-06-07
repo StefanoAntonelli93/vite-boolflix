@@ -27,6 +27,13 @@ export default {
 
         <!-- FILM -->
         <div v-for="(film, index) in store.film.results" :key="index">
+            <!-- poster -->
+            <div>
+                <!-- interpolazione poster$sizeposter$linkapi -->
+                <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path}`"
+                    :alt="film.title">
+            </div>
+
             <p v-if="film.title === film.original_title">
                 Titolo: {{ film.title }}</p>
             <p v-else>
@@ -35,14 +42,14 @@ export default {
             </p>
             <p>Lingua:
                 <span v-if="film.original_language === 'it'">
-                    <img src="/images/flags/italy.png">
+                    <img class="img_flags" src="/images/flags/italy.png">
                 </span>
                 <span v-else-if="film.original_language === 'en'">
-                    <img src="/images/flags/united-kingdom.png">
-                    <img src="/images/flags/united-states.png">
+                    <img class="img_flags" src="/images/flags/united-kingdom.png">
+                    <img class="img_flags" src="/images/flags/united-states.png">
                 </span>
                 <span v-else-if="film.original_language === 'ja'">
-                    <img src="/images/flags/japan.png">
+                    <img class="img_flags" src="/images/flags/japan.png">
 
                 </span>
                 <span v-else>
@@ -56,18 +63,25 @@ export default {
 
         <!-- SERIE TV  -->
         <div v-for="(tv, index) in store.tv.results" :key="index">
+            <!-- poster -->
+            <div>
+                <!-- interpolazione poster$sizeposter$linkapi -->
+                <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${tv.poster_path}`"
+                    :alt="tv.name">
+            </div>
+
             <p>Titolo: {{ tv.name }}</p>
             <p>Titolo Originale: {{ tv.original_name }}</p>
             <p>Lingua:
                 <span v-if="tv.original_language === 'it'">
-                    <img src="/images/flags/italy.png">
+                    <img class="img_flags" src="/images/flags/italy.png">
                 </span>
                 <span v-else-if="tv.original_language === 'en'">
-                    <img src="/images/flags/united-kingdom.png">
-                    <img src="/images/flags/united-states.png">
+                    <img class="img_flags" src="/images/flags/united-kingdom.png">
+                    <img class="img_flags" src="/images/flags/united-states.png">
                 </span>
                 <span v-else-if="film.original_language === 'ja'">
-                    <img src="/images/flags/japan.png">
+                    <img class="img_flags" src="/images/flags/japan.png">
 
                 </span>
                 <span v-else>
@@ -84,7 +98,7 @@ export default {
 
 
 <style scoped>
-img {
+.img_flags {
     width: 1rem;
     margin-right: 5px;
 }
