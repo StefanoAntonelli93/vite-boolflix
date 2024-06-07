@@ -3,6 +3,7 @@ import { store } from '../store';
 
 export default {
     name: "SearchFilm",
+    emits: ['search'],
     data() {
         return {
             store,
@@ -40,6 +41,7 @@ export default {
             </p>
             <p>Media Voto: {{ film.vote_average }}</p>
             <p>Trama: {{ film.overview }}</p>
+            <hr>
         </div>
     </div>
 </template>

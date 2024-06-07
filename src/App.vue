@@ -26,11 +26,12 @@ export default {
           // Aggiungo parametri di ricerca
           params: {
             api_key: this.store.apiKey,
+            // imposto lingua italiano ai dati api
             language: this.store.language,
             query: searchText,
           }
         }).then((response) => {
-          console.log(response.data);
+          console.log(response.data.results);
           // L'array results si popola dei dati API
           this.store.results = response.data;
         }).catch((error) => {
@@ -52,6 +53,7 @@ export default {
 
   <div class="container py-5">
     <h1 class="text-danger">Boolflix</h1>
+    <!-- chiamata emit -->
     <SearchFilm @search="getFilm" />
 
 
