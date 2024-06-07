@@ -37,6 +37,10 @@ export default {
                     <img src="/images/flags/united-kingdom.png">
                     <img src="/images/flags/united-states.png">
                 </span>
+                <span v-else-if="film.original_language === 'ja'">
+                    <img src="/images/flags/japan.png">
+
+                </span>
                 <span v-else>
                     {{ film.original_language }}
                 </span>
@@ -57,6 +61,10 @@ export default {
                 <span v-else-if="tv.original_language === 'en'">
                     <img src="/images/flags/united-kingdom.png">
                     <img src="/images/flags/united-states.png">
+                </span>
+                <span v-else-if="film.original_language === 'ja'">
+                    <img src="/images/flags/japan.png">
+
                 </span>
                 <span v-else>
                     {{ tv.original_language }}
