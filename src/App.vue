@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    // Funzione per chiamata API
+    // Funzione per chiamata API per film
     getFilm(searchText = '') {
       if (searchText) {
         axios.get(this.store.apiInfo.baseUrl + this.store.apiInfo.endpoints.movie, {
@@ -30,6 +30,7 @@ export default {
             language: this.store.apiInfo.language,
             query: searchText,
           }
+          // SECONDA CHIAMATA API PER SERIE TV
         }).then((response1) => {
           console.log(response1.data.results);
           // L'array results si popola dei dati API

@@ -35,8 +35,6 @@ export default {
                 </span>
                 <span v-else-if="film.original_language === 'en'">
                     <img src="/images/flags/united-kingdom.png">
-                </span>
-                <span v-else-if="film.original_language === 'us'">
                     <img src="/images/flags/united-states.png">
                 </span>
                 <span v-else>
@@ -58,8 +56,6 @@ export default {
                 </span>
                 <span v-else-if="tv.original_language === 'en'">
                     <img src="/images/flags/united-kingdom.png">
-                </span>
-                <span v-else-if="tv.original_language === 'us'">
                     <img src="/images/flags/united-states.png">
                 </span>
                 <span v-else>
@@ -78,5 +74,6 @@ export default {
 <style scoped>
 img {
     width: 1rem;
+    margin-right: 5px;
 }
 </style>
