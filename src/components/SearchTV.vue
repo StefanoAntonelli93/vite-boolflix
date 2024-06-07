@@ -1,9 +1,9 @@
-<script>
+<!-- <script>
 import { store } from '../store';
 
 
 export default {
-    name: "SearchFilm",
+    name: "SearchTV",
     emits: ['search'],
     data() {
         return {
@@ -24,34 +24,9 @@ export default {
     <div class="container">
         <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
         <button @click="emitSearch">Cerca</button>
-
-        <!-- FILM -->
-        <div v-for="(film, index) in store.film.results" :key="index">
-            <p>Titolo: {{ film.title }}</p>
-            <p>Titolo Originale: {{ film.original_title }}</p>
-            <p>Lingua:
-                <span v-if="film.original_language === 'it'">
-                    <img src="/images/flags/italy.png">
-                </span>
-                <span v-else-if="film.original_language === 'en'">
-                    <img src="/images/flags/united-kingdom.png">
-                </span>
-                <span v-else-if="film.original_language === 'us'">
-                    <img src="/images/flags/united-states.png">
-                </span>
-                <span v-else>
-                    {{ film.original_language }}
-                </span>
-            </p>
-            <p>Media Voto: {{ film.vote_average }}</p>
-            <p>Trama: {{ film.overview }}</p>
-            <hr>
-        </div>
-
-        <!-- SERIE TV  -->
-        <div v-for="(tv, index) in store.tv.results" :key="index">
-            <p>Titolo: {{ tv.name }}</p>
-            <p>Titolo Originale: {{ tv.original_name }}</p>
+        <div v-for="(tv, index) in store.results.results" :key="index">
+            <p>Titolo: {{ tv.title }}</p>
+            <p>Titolo Originale: {{ tv.original_title }}</p>
             <p>Lingua:
                 <span v-if="tv.original_language === 'it'">
                     <img src="/images/flags/italy.png">
@@ -79,4 +54,4 @@ export default {
 img {
     width: 1rem;
 }
-</style>
+</style> -->
