@@ -3,6 +3,7 @@
 
 import SearchFilm from './components/SearchFilm.vue';
 
+
 // importo store
 import { store } from './store';
 // importo axios
@@ -65,6 +66,8 @@ export default {
 <template>
   <div class="container py-5">
     <h1 class="text-danger"><a href="/">Boolflix</a></h1>
+    <i class="fa-solid fa-star"></i>
+
     <!-- chiamata emit -->
     <SearchFilm @search="getFilm" />
 
