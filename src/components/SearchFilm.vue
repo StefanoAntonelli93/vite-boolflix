@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store';
+import StarRating from './StarRating.vue';
 
 
 export default {
@@ -16,8 +17,10 @@ export default {
             this.$emit('search', this.searchText);
         }
     },
-
-};
+    components: {
+        StarRating,
+    }
+}
 </script>
 
 <template>
@@ -56,7 +59,10 @@ export default {
                     {{ film.original_language }}
                 </span>
             </p>
-            <p>Media Voto: {{ film.vote_average }}</p>
+                <!-- star rating -->
+            <p>Voto: <StarRating :vote="film.vote_average" /> <span> ({{ film.vote_average }})</span></p>
+        
+           
             <p>Trama: {{ film.overview }}</p>
             <hr>
         </div>
@@ -88,7 +94,9 @@ export default {
                     {{ tv.original_language }}
                 </span>
             </p>
-            <p>Media Voto: {{ tv.vote_average }}</p>
+         <!-- star rating -->
+         <p>Voto: <StarRating :vote="tv.vote_average" /> <span> ({{ tv.vote_average }})</span></p>
+        
             <p>Trama: {{ tv.overview }}</p>
             <hr>
         </div>
