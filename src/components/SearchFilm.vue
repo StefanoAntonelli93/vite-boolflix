@@ -34,42 +34,49 @@ export default {
     </header>
 <div class="p-5 bg-secondary d-flex flex-wrap justify-content-between text-white  ">
     <!-- FILM -->
-    <div v-for="(film, index) in store.film.results" :key="index">
-        <!-- poster -->
-        <div>
-            <!-- interpolazione poster$sizeposter$linkapi -->
-            <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path}`"
-                :alt="film.title">
-        </div>
-
-        <p v-if="film.title === film.original_title">
-            Titolo: {{ film.title }}</p>
-        <p v-else>
-        <p> Titolo: {{ film.title }}</p>
-        <p> Titolo originale: {{ film.original_title }}</p>
-        </p>
-        <p>Lingua:
-            <span v-if="film.original_language === 'it'">
-                <img class="img_flags" src="/images/flags/italy.png">
-            </span>
-            <span v-else-if="film.original_language === 'en'">
-                <img class="img_flags" src="/images/flags/united-kingdom.png">
-                <img class="img_flags" src="/images/flags/united-states.png">
-            </span>
-            <span v-else-if="film.original_language === 'ja'">
-                <img class="img_flags" src="/images/flags/japan.png">
-
-            </span>
-            <span v-else>
-                {{ film.original_language }}
-            </span>
-        </p>
-            <!-- star rating -->
-        <p>Voto: <StarRating :vote="film.vote_average" /> <span> ({{ film.vote_average }})</span></p>
-    
+    <div v-for="(film, index) in store.film.results" :key="index" class="card">
        
-        <p>Trama: {{ film.overview }}</p>
-        <hr>
+            <div  class="background-card":style="{ backgroundImage: `url(${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path})` }">
+                <div class="content-card">
+
+                     <!-- poster -->
+                     <div>
+                         <!-- interpolazione poster$sizeposter$linkapi
+                         <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path}`"
+                             :alt="film.title"> -->
+                     </div>
+             
+                     <p v-if="film.title === film.original_title">
+                         Titolo: {{ film.title }}</p>
+                     <p v-else>
+                     <p> Titolo: {{ film.title }}</p>
+                     <p> Titolo originale: {{ film.original_title }}</p>
+                     </p>
+                     <p>Lingua:
+                         <span v-if="film.original_language === 'it'">
+                             <img class="img_flags" src="/images/flags/italy.png">
+                         </span>
+                         <span v-else-if="film.original_language === 'en'">
+                             <img class="img_flags" src="/images/flags/united-kingdom.png">
+                             <img class="img_flags" src="/images/flags/united-states.png">
+                         </span>
+                         <span v-else-if="film.original_language === 'ja'">
+                             <img class="img_flags" src="/images/flags/japan.png">
+             
+                         </span>
+                         <span v-else>
+                             {{ film.original_language }}
+                         </span>
+                     </p>
+                         <!-- star rating -->
+                     <p>Voto: <StarRating :vote="film.vote_average" /> <span> ({{ film.vote_average }})</span></p>
+                 
+                    
+                     <p>Trama: {{ film.overview }}</p>
+                </div>
+
+            </div>
+
     </div>
 
     <!-- SERIE TV  -->
@@ -117,5 +124,18 @@ export default {
     width: 1rem;
     margin-right: 5px;
 }
+.card {
+    width:calc(100% / 4);
+    border: 3px solid gold;
+}
+.background-card {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+} .content-card {
+
+}
+
 
 </style>
