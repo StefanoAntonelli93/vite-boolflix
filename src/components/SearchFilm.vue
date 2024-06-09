@@ -28,7 +28,8 @@ export default {
         <h1 class="text-danger"><a  class="text-reset text-decoration-none"href="/">Boolflix</a></h1>
         <div class="search-bar">
             <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
-            <button @click="emitSearch">Cerca</button>
+            
+        <i class="fa-solid fa-magnifying-glass text-white ms-2"@click="emitSearch"></i>
 
         </div>
     </header>
