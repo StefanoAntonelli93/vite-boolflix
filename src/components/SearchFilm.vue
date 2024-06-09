@@ -32,7 +32,7 @@ export default {
 
         </div>
     </header>
-<div class="p-5 d-flex flex-wrap justify-content-between">
+<div class="p-5 d-flex flex-wrap gap-3 ">
     <!-- FILM -->
     <div v-for="(film, index) in store.film.results" :key="index" >
    
@@ -71,40 +71,45 @@ export default {
             </div>
         
    
-</div>
+    </div>
 
     <!-- SERIE TV  -->
     <div v-for="(tv, index) in store.tv.results" :key="index">
         <!-- poster -->
-        <div>
-            <!-- interpolazione poster$sizeposter$linkapi -->
+        <div class="image-container mb-5"> 
             <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${tv.poster_path}`"
-                :alt="tv.name">
+            :alt="tv.name">
+             <!-- overlay content -->
+            <div class="overlay-content">
+                <p>Titolo: {{ tv.name }}</p>
+                <p>Titolo Originale: {{ tv.original_name }}</p>
+                <p>Lingua:
+                    <span v-if="tv.original_language === 'it'">
+                        <img class="img_flags" src="/images/flags/italy.png">
+                    </span>
+                    <span v-else-if="tv.original_language === 'en'">
+                        <img class="img_flags" src="/images/flags/united-kingdom.png">
+                        <img class="img_flags" src="/images/flags/united-states.png">
+                    </span>
+                    <span v-else-if="film.original_language === 'ja'">
+                        <img class="img_flags" src="/images/flags/japan.png">
+            
+                    </span>
+                    <span v-else>
+                        {{ tv.original_language }}
+                    </span>
+                </p>
+                <!-- star rating -->
+                <p>Voto: <StarRating :vote="tv.vote_average" /> <span> ({{ tv.vote_average }})</span></p>
+                <p  class="text-overflow">Trama: {{ tv.overview }}</p>
+                    
+                    
+                
+            </div>
+                
         </div>
-
-        <p>Titolo: {{ tv.name }}</p>
-        <p>Titolo Originale: {{ tv.original_name }}</p>
-        <p>Lingua:
-            <span v-if="tv.original_language === 'it'">
-                <img class="img_flags" src="/images/flags/italy.png">
-            </span>
-            <span v-else-if="tv.original_language === 'en'">
-                <img class="img_flags" src="/images/flags/united-kingdom.png">
-                <img class="img_flags" src="/images/flags/united-states.png">
-            </span>
-            <span v-else-if="film.original_language === 'ja'">
-                <img class="img_flags" src="/images/flags/japan.png">
-
-            </span>
-            <span v-else>
-                {{ tv.original_language }}
-            </span>
-        </p>
-     <!-- star rating -->
-     <p>Voto: <StarRating :vote="tv.vote_average" /> <span> ({{ tv.vote_average }})</span></p>
-    
-        <p>Trama: {{ tv.overview }}</p>
-        <hr>
+          
+       
     </div>
 
 </div>
