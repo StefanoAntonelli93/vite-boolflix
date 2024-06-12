@@ -29,7 +29,7 @@ export default {
         <div class="search-bar">
             <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
             
-        <i class="fa-solid fa-magnifying-glass text-white ms-2"@click="emitSearch"></i>
+        <i class="fa-solid fa-magnifying-glass text-white ms-2" @click="emitSearch"></i>
 
         </div>
     </header>
@@ -136,9 +136,9 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    color: white; /* Colore del testo, cambia se necessario */
-    background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente, cambia se necessario */
-    padding: 20px; /* Spazio interno del contenitore, cambia se necessario */
+    color: white; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 20px; 
     width: 100%;
     height: 100%;
     opacity: 0; 

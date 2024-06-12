@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <body class="bg-secondary">
+  <body>
     <section>
       <main>
         <div class="container"></div>
