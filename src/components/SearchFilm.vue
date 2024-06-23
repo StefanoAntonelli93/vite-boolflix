@@ -25,7 +25,7 @@ export default {
 
 <template>
     <header class="d-flex justify-content-between  align-items-center py-3 px-5 bg-dark">
-        <h1 class="text-danger"><a  class="text-reset text-decoration-none"href="/">Boolflix</a></h1>
+        <h1 class="text-danger"><a  class="text-reset text-decoration-none" href="">Boolflix</a></h1>
         <div class="search-bar">
             <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
             
