@@ -1,8 +1,7 @@
 <script>
 // import searchfilm
 
-import SearchFilm from "./components/SearchFilm.vue";
-import CardElement from "./components/CardElement.vue";
+import searchFilm from "./components/searchFilm.vue";
 
 // importo store
 import { store } from "./store";
@@ -12,8 +11,7 @@ import axios from "axios";
 export default {
   name: "AppBoolflix",
   components: {
-    SearchFilm,
-    CardElement,
+    searchFilm,
   },
   data() {
     return {
@@ -75,9 +73,8 @@ export default {
 
 <template>
   <header>
-    <SearchFilm @search="getFilm" />
+    <searchFilm @search="getFilm" />
   </header>
-  <CardElement />
 </template>
 
 <style scoped lang="scss"></style>

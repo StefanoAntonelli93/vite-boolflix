@@ -4,7 +4,7 @@ import StarRating from './StarRating.vue';
 
 
 export default {
-    name: "SearchFilm",
+    name: "searchFilm",
     emits: ['search'],
     data() {
         return {
@@ -25,11 +25,11 @@ export default {
 
 <template>
     <header class="d-flex justify-content-between  align-items-center py-3 px-5 bg-dark">
-        <h1 class="text-danger"><a  class="text-reset text-decoration-none" href="">Boolflix</a></h1>
+        <h1 class="title"><a  class="text-reset text-decoration-none" href="">Netflix</a></h1>
         <div class="search-bar">
             <input type="text" placeholder="Cosa vuoi guardare?" v-model="searchText" @keyup.enter="emitSearch" />
             
-        <i class="fa-solid fa-magnifying-glass text-white ms-2" @click="emitSearch"></i>
+        <i class="fa-solid fa-magnifying-glass  ms-2 search-icon" @click="emitSearch"></i>
 
         </div>
     </header>
@@ -40,8 +40,13 @@ export default {
        
             <div class="image-container mb-5">
                 <!-- poster -->
-                <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path}`" :alt="film.title" class="poster-image">
-                
+                 <!-- se presente allora mettilo altrimenti immagine fallback -->
+                <img v-if="film.poster_path" :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${film.poster_path}`" :alt="film.title" class="poster-image">
+                <img 
+            v-else 
+            src="/fallback/anteprima.jpg" 
+            alt="Immagine non disponibile" 
+         >
                 <!-- overlay content -->
                 <div class="overlay-content">
                     <p v-if="film.title === film.original_title">
@@ -78,8 +83,13 @@ export default {
     <div v-for="(tv, index) in store.tv.results" :key="index">
         <!-- poster -->
         <div class="image-container mb-5"> 
-            <img :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${tv.poster_path}`"
+            <img v-if="tv.poster_path" :src="`${this.store.apiInfo.poster}${this.store.apiInfo.sizePoster}${tv.poster_path}`"
             :alt="tv.name">
+            <img  class="tv"
+            v-else 
+            src="/fallback/anteprima.jpg" 
+            alt="Immagine non disponibile" 
+         >
              <!-- overlay content -->
             <div class="overlay-content">
                 <p>Titolo: {{ tv.name }}</p>
@@ -119,7 +129,7 @@ export default {
 
 
 
-<style scoped>
+<style scoped lang="scss">
 .img_flags {
     width: 1rem;
     margin-right: 5px;
@@ -127,9 +137,11 @@ export default {
 
 .image-container {
     position: relative;
+
    
     }.poster-image {
-            width: 100%; 
+            width: 345px; 
+            height: 515px;
         
         }
         .overlay-content {
@@ -139,18 +151,31 @@ export default {
     color: white; 
     background-color: rgba(0, 0, 0, 0.8); 
     padding: 20px; 
-    width: 100%;
-    height: 100%;
+    width: 345px;
+    height:515px;
     opacity: 0; 
 }.image-container:hover .overlay-content {
     opacity: 1; /* Mostra il contenuto quando si passa sopra con il mouse */
 }.text-overflow {
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
     margin-top: 2rem;
 }
 
+.title {
+    color: red;
+}
+.tv {
+    width: 345px;
+ }
+ .search-icon {
+    transition: color 0.3s; /* Smooth transition effect */
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
 
-
-
+.search-icon:hover {
+    color: red; /* Change the icon color to red on hover */
+}
 </style>
