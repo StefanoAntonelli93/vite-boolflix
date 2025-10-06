@@ -1,7 +1,7 @@
 <script>
 // import searchfilm
 
-import searchFilm from "./components/searchFilm.vue";
+import searchFilm from "./components/SearchFilm.vue";
 
 // importo store
 import { store } from "./store";
